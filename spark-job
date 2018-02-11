@@ -17,5 +17,7 @@ module load Spark/2.2.0-Hadoop-2.6-Java-1.8.0_144
 
 start-all.sh
 
-# kill the java processes in sub shell by ssh
-pkill java
+# wait while the master is running and cleanup java
+# when the job ends 
+masterpid=`ps -f | grep java | awk '/Master/{print $2}'`
+wait $masterpid
