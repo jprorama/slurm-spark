@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# run spark on a dedicated node
+#
+#SBATCH --job-name=spark
+#SBATCH -N 1
+#SBATCH -n 24
+
+host=`hostname`
+
+echo "SSH port forwarding from laptop"
+echo ssh -L 8080:$host:8080 cheaha.rc.uab.edu
+echo "Connection string for local browser"
+echo http://localhost:8080
+
+module load Spark/2.2.0-Hadoop-2.6-Java-1.8.0_144
+
+start-all.sh
+
+# kill the java processes in sub shell by ssh
+pkill java
