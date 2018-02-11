@@ -5,6 +5,7 @@
 #SBATCH --job-name=spark
 #SBATCH -N 1
 #SBATCH -n 24
+#SBATCH --signal=B:SIGUSR1@60 
 
 host=`hostname`
 
@@ -19,5 +20,9 @@ start-all.sh
 
 # wait while the master is running and cleanup java
 # when the job ends 
-masterpid=`ps -f | grep java | awk '/Master/{print $2}'`
-wait $masterpid
+trap "pkill java" SIGUSR1
+
+while true
+do
+ sleep 60
+done
