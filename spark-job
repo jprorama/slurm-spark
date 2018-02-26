@@ -6,6 +6,9 @@
 #SBATCH -N 1
 #SBATCH -n 24
 #SBATCH --signal=B:SIGUSR1@60 
+#
+# Don't run on MIC nodes to avoid virtual nets
+#SBATCH --exclude c0095,c0096
 
 host=`hostname`
 
