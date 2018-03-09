@@ -19,6 +19,9 @@ echo http://localhost:8080
 
 module load Spark/2.2.0-Hadoop-2.6-Java-1.8.0_144
 
+# Set TMP to job TMPDIR to avoid java.io.tmp space issues
+export TMP=$TMPDIR
+
 start-all.sh
 
 # wait while the master is running and cleanup java
