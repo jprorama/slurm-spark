@@ -3,8 +3,8 @@
 # run spark on a dedicated node
 #
 #SBATCH --job-name=spark
-#SBATCH -N 1
-#SBATCH -n 24
+# request entire node
+#SBATCH -N 1 --exclusive
 #SBATCH --signal=B:SIGUSR1@60 
 #
 # Don't run on MIC nodes to avoid virtual nets
