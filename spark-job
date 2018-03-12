@@ -18,6 +18,7 @@ echo "Connection string for local browser"
 echo http://localhost:8080
 
 module load Spark/2.2.0-Hadoop-2.6-Java-1.8.0_144
+module load Python/3.6.3-intel-2017a
 
 # Set TMP to job TMPDIR to avoid java.io.tmp space issues
 export TMP=$TMPDIR
@@ -27,6 +28,10 @@ start-all.sh
 # wait while the master is running and cleanup java
 # when the job ends 
 trap "pkill java" SIGUSR1
+
+# start python notebook
+source venv/bin/activate
+PYTHONPATH=lib/:$PYTHONPATH PYSPARK_DRIVER_PYTHON=jupyter PYSPARK_DRIVER_PYTHON_OPTS=lab pyspark --master spark://$host:7077
 
 while true
 do
