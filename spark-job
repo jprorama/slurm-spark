@@ -25,6 +25,9 @@ module load Python/3.6.3-intel-2017a
 export TMP=$TMPDIR
 # need to set with explicit java options, currently set in .bashrc
 
+# get list of hosts running the workers
+export HOSTLIST=`scontrol show hostname $SLURM_JOB_NODELIST`
+
 start-all.sh
 
 # wait while the master is running and cleanup java
