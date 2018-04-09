@@ -1,0 +1,24 @@
+# example configuration for configuring the environment for workers
+# currenlty started via ssh so fall outside slurm context
+# these setting establish the environment for the work to match the 
+# job environment
+
+# set python for spark workers
+module load Python/3.6.3-intel-2017a
+
+# set up spark worker environment
+export SPARK_LOG_DIR=/home/jpr/projects/spark/logs
+export SPARK_WORKER_DIR=/home/jpr/projects/spark/work
+export SPARK_PID_DIR=$TMPDIR
+
+# set the executor memory 
+# each node has at least 5G/core and that's better than the 1g default
+export SPARK_EXECUTOR_MEMORY=10g
+
+# get java.io.tmp in workers to write to larger space
+export TMPDIR=/local/
+export TMP=$TMPDIR
+export SPARK_JAVA_OPTS="-Dspark.local.dir=$TMPDIR"
+# set java system options to use preferred TMPDIR
+# https://stackoverflow.com/a/5530914
+export _JAVA_OPTIONS=-Djava.io.tmpdir=$TMPDIR

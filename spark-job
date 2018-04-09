@@ -21,7 +21,9 @@ module load Spark/2.2.0-Hadoop-2.6-Java-1.8.0_144
 module load Python/3.6.3-intel-2017a
 
 # Set TMP to job TMPDIR to avoid java.io.tmp space issues
+# this doesn't work because java doesn't read $TMP
 export TMP=$TMPDIR
+# need to set with explicit java options, currently set in .bashrc
 
 start-all.sh
 
