@@ -28,6 +28,10 @@ export TMP=$TMPDIR
 # get list of hosts running the workers
 export HOSTLIST=`scontrol show hostname $SLURM_JOB_NODELIST`
 
+# set the executor memory 
+# each node has at least 5G/core and that's better than the 1g default
+export SPARK_EXECUTOR_MEMORY=10g
+
 start-all.sh
 
 # wait while the master is running and cleanup java
