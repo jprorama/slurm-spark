@@ -30,7 +30,7 @@ export HOSTLIST=`scontrol show hostname $SLURM_JOB_NODELIST`
 
 # set the executor memory 
 # each node has at least 5G/core and that's better than the 1g default
-export SPARK_EXECUTOR_MEMORY=10g
+export SPARK_EXECUTOR_MEMORY=100g
 
 start-all.sh
 
