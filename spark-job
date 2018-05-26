@@ -35,8 +35,9 @@ export SPARK_EXECUTOR_MEMORY=10g
 start-all.sh
 
 # wait while the master is running and cleanup java
-# when the job ends 
-trap "pkill java" SIGUSR1
+# when the job ends either naturally or with scancel
+trap "echo caught USR1; pkill java" SIGUSR1
+trap "echo caught TERM; pkill java" SIGTERM
 
 # start python notebook
 source venv/bin/activate
