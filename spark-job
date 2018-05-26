@@ -44,5 +44,5 @@ PYTHONPATH=lib/:$PYTHONPATH PYSPARK_DRIVER_PYTHON=jupyter PYSPARK_DRIVER_PYTHON_
 
 while true
 do
- sleep 60
+ sleep 1
 done
