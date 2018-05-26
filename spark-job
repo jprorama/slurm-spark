@@ -41,7 +41,7 @@ trap "echo caught TERM; pkill java" SIGTERM
 
 # start python notebook
 source venv/bin/activate
-PYTHONPATH=lib/:$PYTHONPATH PYSPARK_DRIVER_PYTHON=jupyter PYSPARK_DRIVER_PYTHON_OPTS=lab pyspark --master spark://$host:7077
+PYTHONPATH=lib/:$PYTHONPATH PYSPARK_DRIVER_PYTHON=jupyter PYSPARK_DRIVER_PYTHON_OPTS=lab pyspark --master spark://$host:7077 --driver-memory 45g &
 
 while true
 do
