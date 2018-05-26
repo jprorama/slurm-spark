@@ -16,7 +16,7 @@ if [ -f ~/.usespark ]; then
 
    # set the executor memory
    # each node has at least 5G/core and that's better than the 1g default
-   export SPARK_EXECUTOR_MEMORY=10g
+   export SPARK_EXECUTOR_MEMORY=100g
 
    # get java.io.tmp in workers to write to larger space
    export TMPDIR=/local/
